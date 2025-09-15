@@ -1,0 +1,19 @@
+<?php
+include("conexion.php");
+
+$nombre = $_POST["nombre"];
+$servicio = $_POST["servicio"];
+$horario = $_POST["horario"];
+$fecha = $_POST["fecha"];
+$duracion = $_POST["duracion"];
+
+$sql = "INSERT INTO turnos (nombre, servicio, horario, fecha, duracion) VALUES ('$nombre', '$servicio', '$horario', '$fecha', '$duracion')";
+
+if ($conexion->query($sql) === TRUE) {
+    echo "Turno reservado con éxito";
+} else {
+    echo "Error al reservar el turno: " . $conexion->error;
+}
+
+$conexion->close();
+?>
